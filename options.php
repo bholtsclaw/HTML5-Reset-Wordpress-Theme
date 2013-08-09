@@ -27,53 +27,6 @@ function optionsframework_option_name() {
 
 function optionsframework_options() {
 
-	// Test data
-	$test_array = array(
-		'one' => __('One', 'html5reset'),
-		'two' => __('Two', 'html5reset'),
-		'three' => __('Three', 'html5reset'),
-		'four' => __('Four', 'html5reset'),
-		'five' => __('Five', 'html5reset')
-	);
-
-	// Multicheck Array
-	$multicheck_array = array(
-		'one' => __('French Toast', 'html5reset'),
-		'two' => __('Pancake', 'html5reset'),
-		'three' => __('Omelette', 'html5reset'),
-		'four' => __('Crepe', 'html5reset'),
-		'five' => __('Waffle', 'html5reset')
-	);
-
-	// Multicheck Defaults
-	$multicheck_defaults = array(
-		'one' => '1',
-		'five' => '1'
-	);
-
-	// Background Defaults
-	$background_defaults = array(
-		'color' => '',
-		'image' => '',
-		'repeat' => 'repeat',
-		'position' => 'top center',
-		'attachment'=>'scroll' );
-
-	// Typography Defaults
-	$typography_defaults = array(
-		'size' => '15px',
-		'face' => 'georgia',
-		'style' => 'bold',
-		'color' => '#bada55' );
-		
-	// Typography Options
-	$typography_options = array(
-		'sizes' => array( '6','12','14','16','20' ),
-		'faces' => array( 'Helvetica Neue' => 'Helvetica Neue','Arial' => 'Arial' ),
-		'styles' => array( 'normal' => 'Normal','bold' => 'Bold' ),
-		'color' => false
-	);
-
 	// Pull all the categories into an array
 	$options_categories = array();
 	$options_categories_obj = get_categories();
@@ -87,7 +40,6 @@ function optionsframework_options() {
 	foreach ( $options_tags_obj as $tag ) {
 		$options_tags[$tag->term_id] = $tag->name;
 	}
-
 
 	// Pull all the pages into an array
 	$options_pages = array();
@@ -137,26 +89,26 @@ function optionsframework_options() {
 		'type' => 'upload');
 	$options[] = array(
 		'name' => __('Apple Touch Icon', 'html5reset'),
-		'desc' => __("", 'html5reset'),
+		'desc' => __('', 'html5reset'),
 		'id' => 'head_apple_touch_icon',
 		'type' => 'upload');
 
 // App: Windows 8
 	$options[] = array(
 		'name' => __('App: Windows 8', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('Application Name', 'html5reset'),
 		'id' => 'meta_app_win_name',
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
 		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('Tile Color', 'html5reset'),
 		'id' => 'meta_app_win_color',
 		'std' => '',
 		'type' => 'color');
 	$options[] = array(
 		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('Tile Image', 'html5reset'),
 		'id' => 'meta_app_win_image',
 		'std' => '',
 		'type' => 'upload');
@@ -164,31 +116,31 @@ function optionsframework_options() {
 // App: Twitter
 	$options[] = array(
 		'name' => __('App: Twitter Card', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('twitter:card (summary, photo, gallery, product, app, player)', 'html5reset'),
 		'id' => 'meta_app_twt_card',
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
 		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('twitter:site (@username of website)', 'html5reset'),
 		'id' => 'meta_app_twt_site',
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
 		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __("twitter:title (the user's Twitter ID)", 'html5reset'),
 		'id' => 'meta_app_twt_title',
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
 		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('twitter:description (maximum 200 characters)', 'html5reset'),
 		'id' => 'meta_app_twt_description',
 		'std' => '',
 		'type' => 'textarea');
 	$options[] = array(
 		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('twitter:url (url for the content)', 'html5reset'),
 		'id' => 'meta_app_twt_url',
 		'std' => '',
 		'type' => 'text');
@@ -196,66 +148,28 @@ function optionsframework_options() {
 // App: Facebook
 	$options[] = array(
 		'name' => __('App: Facebook', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('og:title', 'html5reset'),
 		'id' => 'meta_app_fb_title',
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
 		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('og:description', 'html5reset'),
 		'id' => 'meta_app_fb_description',
 		'std' => '',
 		'type' => 'textarea');
 	$options[] = array(
 		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('og:url', 'html5reset'),
 		'id' => 'meta_app_fb_url',
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
 		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
+		'desc' => __('og:image', 'html5reset'),
 		'id' => 'meta_app_fb_image',
 		'std' => '',
 		'type' => 'upload');
-
-
-
-
-
-
-
-	$options[] = array(
-		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
-		'id' => '',
-		'std' => '',
-		'type' => 'text');
-
-//		'class' => 'mini',
-//
-//$options[] = array(
-//	'name' => __('', 'html5reset'),
-//	'desc' => __('.', 'html5reset'),
-//	'id' => '',
-//	'std' => '',
-//	'type' => 'text');
-
-
-	$options[] = array(
-		'name' => __('', 'html5reset'),
-		'desc' => __('', 'html5reset'),
-		'id' => '',
-//		'std' => '1',
-		'type' => 'checkbox');
-
-
-	$options[] = array(
-		'name' => __('', 'html5reset'),
-		'desc' => __('.', 'html5reset'),
-		'id' => '',
-		'std' => '',
-		'type' => 'text');
 
 	return $options;
 
