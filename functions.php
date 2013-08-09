@@ -1,7 +1,7 @@
 <?php
 /**
  * @package WordPress
- * @subpackage HTML5-Reset-Wordpress-Theme
+ * @subpackage HTML5-Reset-WordPress-Theme
  * @since HTML5 Reset 2.0
  */
 
@@ -40,7 +40,7 @@
 
 		// Modernizr
 		// This is an un-minified, complete version of Modernizr. Before you move to production, you should generate a custom build that only has the detects you need.
-		wp_enqueue_script( 'html5reset-modernizr', get_template_directory_uri() . '/_/js/modernizr-2.6.2.dev.js' );
+		// wp_enqueue_script( 'html5reset-modernizr', get_template_directory_uri() . '/_/js/modernizr-2.6.2.dev.js' );
 		
 	}
 	add_action( 'wp_enqueue_scripts', 'html5reset_scripts_styles' );
@@ -103,34 +103,36 @@
 		add_action( 'wp_enqueue_scripts', 'core_mods' );
 	}
 
-	// Clean up the <head>
-	function removeHeadLinks() {
-    	remove_action('wp_head', 'rsd_link');
-    	remove_action('wp_head', 'wlwmanifest_link');
-    }
-    add_action('init', 'removeHeadLinks');
+	// Clean up the <head>, if you so desire.
+	//	function removeHeadLinks() {
+	//    	remove_action('wp_head', 'rsd_link');
+	//    	remove_action('wp_head', 'wlwmanifest_link');
+	//    }
+	//    add_action('init', 'removeHeadLinks');
 
 	// Custom Menu
 	register_nav_menu( 'primary', __( 'Navigation Menu', 'html5reset' ) );
 
 	// Widgets
-	function html5reset_widgets_init() {
-		register_sidebar( array(
-			'name'          => __( 'Sidebar Widgets', 'html5reset' ),
-			'id'            => 'sidebar-primary',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
-		) );
+	if ( !function_exists('register_sidebar' )) {
+		function html5reset_widgets_init() {
+			register_sidebar( array(
+				'name'          => __( 'Sidebar Widgets', 'html5reset' ),
+				'id'            => 'sidebar-primary',
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h3 class="widget-title">',
+				'after_title'   => '</h3>',
+			) );
+		}
+		add_action( 'widgets_init', 'html5reset_widgets_init' );
 	}
-	add_action( 'widgets_init', 'html5reset_widgets_init' );
 
 	// Navigation - update coming from twentythirteen
 	function post_navigation() {
 		echo '<div class="navigation">';
-		echo '	<div class="next-posts">'.next_posts_link('&laquo; Older Entries').'</div>';
-		echo '	<div class="prev-posts">'.previous_posts_link('Newer Entries &raquo;').'</div>';
+		echo '	<div class="next-posts">'.get_next_posts_link('&laquo; Older Entries').'</div>';
+		echo '	<div class="prev-posts">'.get_previous_posts_link('Newer Entries &raquo;').'</div>';
 		echo '</div>';
 	}
 

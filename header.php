@@ -1,7 +1,7 @@
 <?php
 /**
  * @package WordPress
- * @subpackage HTML5-Reset-Wordpress-Theme
+ * @subpackage HTML5-Reset-WordPress-Theme
  * @since HTML5 Reset 2.0
  */
 ?><!doctype html>
@@ -64,12 +64,12 @@
 	} ?>
 
 	<!-- concatenate and minify for production -->
-	<link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/reset.css" />
-	<link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/style.css" />
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/reset.css" />
+	<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" />
 	
 	<!-- This is an un-minified, complete version of Modernizr. 
 		 Before you move to production, you should generate a custom build that only has the detects you need. -->
-	<script src="<?php bloginfo( 'template_directory' ); ?>/_/js/modernizr-2.6.2.dev.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/_/js/modernizr-2.6.2.dev.js"></script>
 
 	<!-- Application-specific meta tags -->
 	<?php if (true == of_get_option('meta_app_win_name')) {
@@ -96,13 +96,6 @@
 	echo '<meta property="og:image" content="'.of_get_option("meta_app_fb_image").'" />';
 	} ?>
 
-	<!-- Dublin Core Metadata : http://dublincore.org/
-	Do we need this?
-	-->
-	<!--<meta name="DC.title" content="Project Name">
-	<meta name="DC.subject" content="What you're about.">
-	<meta name="DC.creator" content="Who made this site.">-->
-
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
@@ -123,3 +116,4 @@
 		<nav id="nav" role="navigation">
 			<?php wp_nav_menu( array('menu' => 'primary') ); ?>
 		</nav>
+

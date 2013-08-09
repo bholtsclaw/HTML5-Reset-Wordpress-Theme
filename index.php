@@ -1,7 +1,7 @@
 <?php
 /**
  * @package WordPress
- * @subpackage HTML5-Reset-Wordpress-Theme
+ * @subpackage HTML5-Reset-WordPress-Theme
  * @since HTML5 Reset 2.0
  */
  get_header(); ?>
@@ -19,9 +19,9 @@
 			</div>
 
 			<footer class="postmetadata">
-				<?php the_tags('Tags: ', ', ', '<br />'); ?>
+				<?php the_tags(__('Tags: ','html5reset'), ', ', '<br />'); ?>
 				<?php _e('Posted in','html5reset'); ?> <?php the_category(', ') ?> | 
-				<?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?>
+				<?php comments_popup_link(__('No Comments &#187;','html5reset'), __('1 Comment &#187;','html5reset'), __('% Comments &#187;','html5reset')); ?>
 			</footer>
 
 		</article>
